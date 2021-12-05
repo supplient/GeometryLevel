@@ -1,0 +1,16 @@
+# vs
+**/.vs
+
+# unity
+Library
+Logs
+obj
+Temp
+UserSettings
+
+# dll
+**/*.dll
+
+# c++
+CppDll/**/bin
+
