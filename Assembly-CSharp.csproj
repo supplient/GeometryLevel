@@ -56,13 +56,17 @@
     <Analyzer Include="E:\code_concerned\vs2019\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Potrace.cs" />
-    <Compile Include="Assets\Scripts\Components\PolygonColliderModifier.cs" />
-    <Compile Include="Assets\Scripts\Components\SpriteGenerator.cs" />
-    <Compile Include="Assets\Scripts\Components\ShapeController.cs" />
     <Compile Include="Assets\Scripts\ISpriteChangeReceiver.cs" />
-    <Compile Include="Assets\Scripts\Components\ShapeEffector.cs" />
+    <Compile Include="Assets\Scripts\Components\PhysicsController.cs" />
+    <Compile Include="Assets\Scripts\Components\ShapeController.cs" />
+    <Compile Include="Assets\Scripts\Components\PolygonColliderModifier.cs" />
+    <Compile Include="Assets\Scripts\Potrace.cs" />
     <Compile Include="Assets\Scripts\MyDebug.cs" />
+    <Compile Include="Assets\Scripts\Components\SpriteGenerator.cs" />
+    <Compile Include="Assets\Scripts\Components\ShapeEffector.cs" />
+    <Compile Include="Assets\Scripts\Components\MirrorEffector.cs" />
+    <Compile Include="Assets\Scripts\Components\MirroredWorker.cs" />
+    <Compile Include="Assets\Scripts\Debug_Temp\FireBall.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

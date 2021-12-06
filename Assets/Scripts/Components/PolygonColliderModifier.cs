@@ -6,15 +6,6 @@ namespace geo_level
 {
 	public class PolygonColliderModifier : MonoBehaviour, ISpriteChangeReceiver
 	{
-		// Component Ref
-		private PolygonCollider2D m_collider;
-
-		// Start is called before the first frame update
-		void Start()
-		{
-			m_collider = GetComponent<PolygonCollider2D>();
-		}
-
         /// <summary>
         /// Colldier will be udpated to match the Sprite's new outline.
         /// </summary>
@@ -48,9 +39,10 @@ namespace geo_level
             }
 
             // Update Collider
-            m_collider.pathCount = pathsInUnit.Count;
+            PolygonCollider2D collider = GetComponent<PolygonCollider2D>();
+            collider.pathCount = pathsInUnit.Count;
             for (int i = 0; i < pathsInUnit.Count; i++)
-                m_collider.SetPath(i, pathsInUnit[i]);
+                collider.SetPath(i, pathsInUnit[i]);
         }
 
 	}

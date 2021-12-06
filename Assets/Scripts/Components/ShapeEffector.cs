@@ -8,6 +8,8 @@ namespace geo_level
 	public class ShapeEffector : MonoBehaviour
 	{
 		public Texture2D m_targetTex;
+		[Tooltip("Whether to reset the rigidbody's rotation before changing shape. This may avoid some penerate problem.")]
+		public bool m_resetRotation = false;
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
@@ -28,7 +30,19 @@ namespace geo_level
 				return;
 
 			// Log
-			Debug.Log(string.Format("{0}'s {1} is triggered by {2}.", name, GetType().Name, target.name));
+			MyDebug.TriggerLog(gameObject, GetType().Name, target);
+
+			// Reset Rigidbody's Rotation
+			if(m_resetRotation)
+			{
+				Rigidbody2D rigidbody = target.GetComponent<Rigidbody2D>();
+				if(!rigidbody)
+				{
+					Debug.LogWarning("Rigidbody not found.");
+					return;
+				}
+				rigidbody.SetRotation(0.0f);
+			}
 
 			// Change Target's Texture
 			spriteGenerator.SetNewTexture(m_targetTex);
