@@ -8,20 +8,20 @@ using UnityEngine.UI;
 
 namespace geo_level
 {
-	public class UIController: MonoBehaviour
+	public class UIManager: MonoBehaviour
 	{
-		public static UIController instance {
+		public static UIManager instance {
 			get
 			{
-				var gameObject = GameObject.FindGameObjectWithTag("GameController");
-				return gameObject.GetComponent<UIController>();
+				var gameObject = GameObject.FindGameObjectWithTag(Utility.TAG_GAME_CONTROLLER);
+				return gameObject.GetComponent<UIManager>();
 			}
 		}
 		private static GameObject canvas
 		{
 			get
 			{
-				return GameObject.FindGameObjectWithTag("UICanvas");
+				return GameObject.FindGameObjectWithTag(Utility.TAG_UI_CANVAS);
 			}
 		}
 
@@ -46,9 +46,9 @@ namespace geo_level
 
 			// Attach Events
 			menuTrans.Find("Resume").GetComponent<Button>()
-				.onClick.AddListener(GameController.instance.ResumeGame);
+				.onClick.AddListener(ExecuteManager.instance.ResumeGame);
 			menuTrans.Find("Quit").GetComponent<Button>()
-				.onClick.AddListener(GameController.instance.QuitGame);
+				.onClick.AddListener(ExecuteManager.instance.QuitGame);
 		}
 		public void RemovePauseMenu()
 		{

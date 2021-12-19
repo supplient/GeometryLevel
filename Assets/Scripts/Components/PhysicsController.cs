@@ -9,7 +9,7 @@ namespace geo_level
 		public static PhysicsController instance {
 			get
 			{
-				var gameObject = GameObject.FindGameObjectWithTag("Player");
+				var gameObject = GameObject.FindGameObjectWithTag(Utility.TAG_PLAYER);
 				return gameObject.GetComponent<PhysicsController>();
 			}
 		}

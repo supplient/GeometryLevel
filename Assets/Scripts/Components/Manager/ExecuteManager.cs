@@ -4,41 +4,15 @@ using UnityEngine;
 
 namespace geo_level
 {
-	public class GameController : MonoBehaviour
+	public class ExecuteManager : MonoBehaviour
 	{
-		public static GameController instance {
+		public static ExecuteManager instance {
 			get
 			{
-				var gameObject = GameObject.FindGameObjectWithTag("GameController");
-				return gameObject.GetComponent<GameController>();
+				var gameObject = GameObject.FindGameObjectWithTag(Utility.TAG_GAME_CONTROLLER);
+				return gameObject.GetComponent<ExecuteManager>();
 			}
 		}
-
-		// ======== Global Keyboard Input =========
-		private void FixedUpdate()
-		{
-			// Forward to GameObject
-			if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-				Forward2PhysicsController();
-		}
-
-		private void Update()
-		{
-			// Global Process, mainly system concerned
-			if(Input.GetKeyDown(KeyCode.Escape))
-				PauseOrResumeGame();
-		}
-
-		private void Forward2PhysicsController()
-		{
-			float input = 0.0f;
-			if(Input.GetKey(KeyCode.A))
-				input += -1.0f;
-			if(Input.GetKey(KeyCode.D))
-				input += 1.0f;
-			PhysicsController.instance.input = input;
-		}
-
 
 		// ======== Exectute Control ==========
 
@@ -76,7 +50,7 @@ namespace geo_level
 			Time.timeScale = 0.0f;
 
 			// Popup Pause Menu
-			UIController.instance.PopupPauseMenu();
+			UIManager.instance.PopupPauseMenu();
 
 			// Update state & Log
 			m_isPaused = true;
@@ -92,7 +66,7 @@ namespace geo_level
 			Time.timeScale = m_timeScale_backup;
 
 			// Remove Pause Menu
-			UIController.instance.RemovePauseMenu();
+			UIManager.instance.RemovePauseMenu();
 
 			// Update state & Log
 			m_isPaused = false;
@@ -108,5 +82,6 @@ namespace geo_level
 #endif // UNITY_EDTIOR
 			Application.Quit(0);
 		}
+
 	}
 }

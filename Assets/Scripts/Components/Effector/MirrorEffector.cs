@@ -19,8 +19,6 @@ namespace geo_level
 		{
 			GameObject target = collision.gameObject;
 
-			// Check if is 
-
 			// Check if mirror area assigned
 			if(!m_mirrorArea)
 			{
