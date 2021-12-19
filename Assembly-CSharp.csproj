@@ -58,15 +58,18 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ISpriteChangeReceiver.cs" />
     <Compile Include="Assets\Scripts\Components\PhysicsController.cs" />
-    <Compile Include="Assets\Scripts\Components\ShapeController.cs" />
+    <Compile Include="Assets\Scripts\Debug_Temp\FireBall.cs" />
+    <Compile Include="Assets\Scripts\Deprecated\ShapeController.cs" />
+    <Compile Include="Assets\Scripts\Components\UIController.cs" />
     <Compile Include="Assets\Scripts\Components\PolygonColliderModifier.cs" />
     <Compile Include="Assets\Scripts\Potrace.cs" />
     <Compile Include="Assets\Scripts\MyDebug.cs" />
     <Compile Include="Assets\Scripts\Components\SpriteGenerator.cs" />
+    <Compile Include="Assets\Scripts\Components\MirroredWorker.cs" />
     <Compile Include="Assets\Scripts\Components\ShapeEffector.cs" />
     <Compile Include="Assets\Scripts\Components\MirrorEffector.cs" />
-    <Compile Include="Assets\Scripts\Components\MirroredWorker.cs" />
-    <Compile Include="Assets\Scripts\Debug_Temp\FireBall.cs" />
+    <Compile Include="Assets\Scripts\Components\GameController.cs" />
+    <Compile Include="Assets\Scripts\Debug_Temp\UIResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

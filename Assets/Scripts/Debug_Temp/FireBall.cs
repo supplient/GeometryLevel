@@ -14,8 +14,7 @@ public class FireBall : MonoBehaviour
         rigidbody.velocity = new Vector2(1.0f, 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         var rigidbody = GetComponent<Rigidbody2D>();
         if(rigidbody.velocity.sqrMagnitude >= m_maxVel)

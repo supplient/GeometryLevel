@@ -41,7 +41,6 @@ namespace geo_level
 			transform.localScale	= scale;
 		}
 
-
 		private delegate Vector3 TransFunc(Vector3 p);
 		private void UpdateTexture()
 		{
