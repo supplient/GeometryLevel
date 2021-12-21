@@ -1,1 +1,2 @@
 * 加速MirroredWorker：将像素位置检查的步骤给GPU并行化
+* 修正Build后像素大小显然不对了的问题
