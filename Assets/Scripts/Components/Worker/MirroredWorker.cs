@@ -51,13 +51,13 @@ namespace geo_level
 			Texture2D originTex = originSprite.texture;
 
 			// Get mirrored's tex
-			SpriteGenerator mirroredSpriteGenertor = GetComponent<SpriteGenerator>();
-			if(!mirroredSpriteGenertor)
+			SpriteGenerator mirroredSpriteGenerator = GetComponent<SpriteGenerator>();
+			if(!mirroredSpriteGenerator)
 			{
 				Debug.LogError("SpriteGenertor not found.", gameObject);
 				return;
 			}
-			Texture2D mirroredTex = mirroredSpriteGenertor.m_tex;
+			Texture2D mirroredTex = mirroredSpriteGenerator.m_tex;
 
 			// Get pivot & transformFunction to transform the point from local-coord to world-coord
 			Vector2 pivot = originSprite.pivot;
@@ -102,14 +102,16 @@ namespace geo_level
 				}
 			}
 
+
+			// Inherit Sprite's Config from the origin
+			SpriteRenderer mirroredSpriteRender = GetComponent<SpriteRenderer>();
+			mirroredSpriteRender.color = originSpriteRender.color;
+			mirroredSpriteGenerator.m_pivot.x = originSprite.pivot.x / originTex.width;
+			mirroredSpriteGenerator.m_pivot.y = originSprite.pivot.y / originTex.height;
+			mirroredSpriteGenerator.m_pixelsPerUnit = originSprite.pixelsPerUnit;
+
 			// Update the mirrored's Sprite
-			SpriteGenerator spriteGenerator = GetComponent<SpriteGenerator>();
-			if(!spriteGenerator)
-			{
-				Debug.LogError("SpriteGenerator not found.");
-				return;
-			}
-			spriteGenerator.UpdateSprite();
+			mirroredSpriteGenerator.UpdateSprite();
 		}
 
 		private void FixedUpdate()

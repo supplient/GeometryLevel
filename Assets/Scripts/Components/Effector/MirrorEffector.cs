@@ -76,12 +76,6 @@ namespace geo_level
 				worker.m_origin = target;
 				worker.m_mirrorArea = m_mirrorArea;
 				worker.m_mirrorTrigger = gameObject;
-
-				// Inherit Sprite's Config
-				mirroredRender.color = targetRender.color;
-				mirroredGenerator.m_pivot.x = targetSprite.pivot.x / targetTex.width;
-				mirroredGenerator.m_pivot.y = targetSprite.pivot.y / targetTex.height;
-				mirroredGenerator.m_pixelsPerUnit = targetSprite.pixelsPerUnit;
 			}
 
 			// Memo the mirrored

@@ -201,6 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canTriggerGoal: 0
+  canTriggerMirror: 0
+  canTriggerShape: 1
 --- !u!114 &7427813278560845065
 MonoBehaviour:
   m_ObjectHideFlags: 0

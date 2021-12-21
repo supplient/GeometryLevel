@@ -8,5 +8,6 @@ namespace geo_level
 	{
 		public bool canTriggerGoal = false;
 		public bool canTriggerMirror = false;
+		public bool canTriggerShape = false;
 	}
 }

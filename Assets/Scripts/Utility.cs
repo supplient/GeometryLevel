@@ -15,5 +15,13 @@ namespace geo_level
 
 		public static bool IsPlayer(GameObject obj) { return obj.CompareTag(Utility.TAG_PLAYER); }
 		public static bool IsMirrored(GameObject obj) { return obj.GetComponent<MirroredWorker>(); }
+
+		public static GameObject GetOriginObject(GameObject obj)
+		{
+			if(obj.GetComponent<MirroredWorker>())
+				return obj.GetComponent<MirroredWorker>().m_origin;
+			else
+				return obj;
+		}
 	}
 }

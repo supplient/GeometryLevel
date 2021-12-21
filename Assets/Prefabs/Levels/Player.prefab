@@ -194,3 +194,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canTriggerGoal: 0
   canTriggerMirror: 1
+  canTriggerShape: 1
