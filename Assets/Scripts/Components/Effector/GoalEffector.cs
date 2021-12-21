@@ -11,8 +11,8 @@ namespace geo_level
 			var triggerObj = collision.gameObject;
 
 			// Check if it is a valid trigger.
-			// Player or Mirrored are valid triggers.
-			if(!Utility.IsPlayer(triggerObj) && !Utility.IsMirrored(triggerObj))
+			var marker = triggerObj.GetComponent<Marker>();
+			if(!marker.canTriggerGoal)
 				return;
 
 			LevelManager.instance.CompleteLevel();

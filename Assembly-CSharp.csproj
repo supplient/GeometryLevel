@@ -56,24 +56,28 @@
     <Analyzer Include="E:\code_concerned\vs2019\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Components\Forcer\ConstantSpeed.cs" />
     <Compile Include="Assets\Scripts\ISpriteChangeReceiver.cs" />
     <Compile Include="Assets\Scripts\Components\PhysicsController.cs" />
     <Compile Include="Assets\Scripts\Debug_Temp\FireBall.cs" />
+    <Compile Include="Assets\Utility.cs" />
+    <Compile Include="Assets\Scripts\Components\Manager\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Deprecated\ShapeController.cs" />
     <Compile Include="Assets\Scripts\Components\Manager\UIManager.cs" />
     <Compile Include="Assets\Scripts\Debug_Temp\UIResponse.cs" />
+    <Compile Include="Assets\Scripts\Components\Manager\InputManager.cs" />
     <Compile Include="Assets\Scripts\Components\PolygonColliderModifier.cs" />
     <Compile Include="Assets\Scripts\Potrace.cs" />
+    <Compile Include="Assets\Scripts\Components\Effector\GoalEffector.cs" />
     <Compile Include="Assets\Scripts\MyDebug.cs" />
     <Compile Include="Assets\Scripts\Components\SpriteGenerator.cs" />
-    <Compile Include="Assets\Scripts\Components\MirroredWorker.cs" />
+    <Compile Include="Assets\Scripts\Components\Worker\MirroredWorker.cs" />
     <Compile Include="Assets\Scripts\Components\Effector\ShapeEffector.cs" />
     <Compile Include="Assets\Scripts\Components\Effector\MirrorEffector.cs" />
     <Compile Include="Assets\Scripts\Components\Manager\ExecuteManager.cs" />
-    <Compile Include="Assets\Scripts\Components\Effector\GoalEffector.cs" />
-    <Compile Include="Assets\Scripts\Components\Manager\LevelManager.cs" />
-    <Compile Include="Assets\Utility.cs" />
-    <Compile Include="Assets\Scripts\Components\Manager\InputManager.cs" />
+    <Compile Include="Assets\Scripts\Components\Marker.cs" />
+    <Compile Include="Assets\Scripts\Components\Emitter\ConstantEmitter.cs" />
+    <Compile Include="Assets\Scripts\Components\Worker\OutBoundaryDestroyWorker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

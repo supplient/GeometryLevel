@@ -13,6 +13,13 @@ namespace geo_level
 		)]
 		public GameObject m_mirrorArea;
 
+		[Tooltip(@"The prefab for the mirrored.
+	Its Mirrored Worker will be modified to attach to the origin, the mirror area and the mirror trigger."
+		)]
+		public GameObject m_mirroredPrefab;
+
+
+
 		private Dictionary<GameObject, GameObject> target2mirrored = new Dictionary<GameObject, GameObject>();
 
 		private void OnTriggerEnter2D(Collider2D collision)
@@ -37,12 +44,15 @@ namespace geo_level
 			// Log
 			MyDebug.TriggerLog(gameObject, GetType().Name, target);
 
-			// Create mirrored
-			// TODO: use a mirror prefab
-			mirrored = Instantiate(target);
-			Destroy(mirrored.GetComponent<PhysicsController>());
-			mirrored.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+			// Create & Init mirrored
+			if(!m_mirroredPrefab)
 			{
+				Debug.LogWarning("Mirrored Prefab not assigned.", this);
+				return;
+			}
+			mirrored = Instantiate(m_mirroredPrefab);
+			{
+				// Create mirrored's texture
 				var targetTex = target.GetComponent<SpriteGenerator>().m_tex;
 				mirrored.GetComponent<SpriteGenerator>().m_tex = new Texture2D(
 					targetTex.width, targetTex.height, 
@@ -50,6 +60,7 @@ namespace geo_level
 					false, false
 				);
 
+				// Clear the texutre
 				// TODO: now just clear the texture
 				//		Maybe a better faster solution
 				for(int x=0; x<targetTex.width; x++)
@@ -59,13 +70,13 @@ namespace geo_level
 						mirrored.GetComponent<SpriteGenerator>().m_tex.SetPixel(x, y, new Color(0, 0, 0, 0));
 					}
 				}
-			}
 
-			// Attach the mirrored
-			var worker = mirrored.AddComponent<MirroredWorker>();
-			worker.m_origin = target;
-			worker.m_mirrorArea = m_mirrorArea;
-			worker.m_mirrorTrigger = gameObject;
+				// Attach the mirrored
+				var worker = mirrored.GetComponent<MirroredWorker>();
+				worker.m_origin = target;
+				worker.m_mirrorArea = m_mirrorArea;
+				worker.m_mirrorTrigger = gameObject;
+			}
 
 			// Memo the mirrored
 			target2mirrored[target] = mirrored;
