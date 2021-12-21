@@ -19,3 +19,7 @@ I made two levels to show how the concepts above can work in the level design. T
 * After building, it works strange.
 * Use tilemap for level creating
 * Make the camera follow the player
+
+# Thanks
+* [potrace](http://potrace.sourceforge.net/#license): Very handful and useful tracing algorighm & program.
+* [inkscape](https://inkscape.org/): Simple but Powerful SVG editor.
