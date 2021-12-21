@@ -60,7 +60,7 @@
     <Compile Include="Assets\Scripts\ISpriteChangeReceiver.cs" />
     <Compile Include="Assets\Scripts\Components\PhysicsController.cs" />
     <Compile Include="Assets\Scripts\Debug_Temp\FireBall.cs" />
-    <Compile Include="Assets\Utility.cs" />
+    <Compile Include="Assets\Scripts\Utility.cs" />
     <Compile Include="Assets\Scripts\Components\Manager\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Deprecated\ShapeController.cs" />
     <Compile Include="Assets\Scripts\Components\Manager\UIManager.cs" />
@@ -77,7 +77,8 @@
     <Compile Include="Assets\Scripts\Components\Manager\ExecuteManager.cs" />
     <Compile Include="Assets\Scripts\Components\Marker.cs" />
     <Compile Include="Assets\Scripts\Components\Emitter\ConstantEmitter.cs" />
-    <Compile Include="Assets\Scripts\Components\Worker\OutBoundaryDestroyWorker.cs" />
+    <Compile Include="Assets\Scripts\Deprecated\OutBoundaryDestroyWorker.cs" />
+    <Compile Include="Assets\Scripts\Components\Worker\LifeTimeDestroyWorker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

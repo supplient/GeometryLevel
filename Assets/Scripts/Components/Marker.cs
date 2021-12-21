@@ -7,5 +7,6 @@ namespace geo_level
 	public class Marker : MonoBehaviour
 	{
 		public bool canTriggerGoal = false;
+		public bool canTriggerMirror = false;
 	}
 }

@@ -193,3 +193,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canTriggerGoal: 0
+  canTriggerMirror: 1

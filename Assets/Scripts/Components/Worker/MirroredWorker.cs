@@ -45,13 +45,10 @@ namespace geo_level
 		private void UpdateTexture()
 		{
 			// Get m_origin's tex
-			SpriteGenerator m_originSpriteGenerator = m_origin.GetComponent<SpriteGenerator>();
-			if(!m_originSpriteGenerator)
-			{
-				Debug.LogError("SpriteGenertor not found.", m_origin);
-				return;
-			}
-			Texture2D m_originTex = m_originSpriteGenerator.m_tex;
+			// SpriteGenerator m_originSpriteGenerator = m_origin.GetComponent<SpriteGenerator>();
+			SpriteRenderer originSpriteRender = m_origin.GetComponent<SpriteRenderer>();
+			Sprite originSprite = originSpriteRender.sprite;
+			Texture2D originTex = originSprite.texture;
 
 			// Get mirrored's tex
 			SpriteGenerator mirroredSpriteGenertor = GetComponent<SpriteGenerator>();
@@ -63,8 +60,8 @@ namespace geo_level
 			Texture2D mirroredTex = mirroredSpriteGenertor.m_tex;
 
 			// Get pivot & transformFunction to transform the point from local-coord to world-coord
-			Vector2 pivot = m_originSpriteGenerator.m_pivot;
-			float pixelsPerUnit = m_originSpriteGenerator.m_pixelsPerUnit;
+			Vector2 pivot = originSprite.pivot;
+			float pixelsPerUnit = originSprite.pixelsPerUnit;
 			TransFunc transFunc_l2w = m_origin.transform.TransformPoint;
 
 			// Get the mirror trigger's collider
@@ -80,13 +77,13 @@ namespace geo_level
 			*	it will be filled into mirrorTex.
 			*	Otherwise, the pixel will be ignored.
 			*/
-			for(int y=0; y < m_originTex.height; y++)
+			for(int y=0; y < originTex.height; y++)
 			{
-				for(int x=0; x < m_originTex.width; x++)
+				for(int x=0; x < originTex.width; x++)
 				{
 					// Transform the pixel: tex-coord -> local-coord -> world-coord
-					float x_local = ((float)x / m_originTex.width  - pivot.x) * m_originTex.width  / pixelsPerUnit;
-					float y_local = ((float)y / m_originTex.height - pivot.y) * m_originTex.height / pixelsPerUnit;
+					float x_local = (x - pivot.x) / pixelsPerUnit;
+					float y_local = (y - pivot.y) / pixelsPerUnit;
 					var p_local = new Vector3(x_local, y_local, 0.0f);
 					var p_world = transFunc_l2w(p_local);
 					
@@ -94,7 +91,7 @@ namespace geo_level
 					if(collider.OverlapPoint(new Vector2(p_world.x, p_world.y)))
 					{
 						// If in, fill the mirrorTex
-						Color32 color = m_originTex.GetPixel(x, y);
+						Color32 color = originTex.GetPixel(x, y);
 						mirroredTex.SetPixel(x, y, color);
 					}
 					else

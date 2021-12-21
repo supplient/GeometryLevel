@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8990681752238171035}
   - component: {fileID: 8990681752238171039}
   - component: {fileID: 3867223921271326470}
-  - component: {fileID: 5985480020561905093}
+  - component: {fileID: 967184594511856278}
   m_Layer: 0
-  m_Name: BounceBall
+  m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.754717, g: 0.30188677, b: 0.30188677, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9a3e5ae3f001ba84e97c7d423701d012, type: 3}
+  m_Color: {r: 0.6415094, g: 0.25055176, b: 0.25055176, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -200,7 +200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canTriggerGoal: 1
---- !u!114 &5985480020561905093
+  canTriggerMirror: 0
+--- !u!114 &967184594511856278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,10 +210,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8990681752238171032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aad03bfae24d6914bba540edc7fdd77a, type: 3}
+  m_Script: {fileID: 11500000, guid: da659cae0a9dfc44eb84a838035c57e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_checkInterval: 0.1
-  m_margin: 2
-  m_leftBottom: {x: 0, y: 0}
-  m_rightTop: {x: 0, y: 0}
+  m_lifeTime: 30

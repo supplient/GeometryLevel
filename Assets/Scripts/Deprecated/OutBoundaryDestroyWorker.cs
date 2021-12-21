@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 namespace geo_level
 {
+	// Desprecated
 	public class OutBoundaryDestroyWorker : MonoBehaviour
 	{
 		[Tooltip(@"The interval between each checking whether should be destroyed, in seconds.

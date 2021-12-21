@@ -1,0 +1,1 @@
+* 加速MirroredWorker：将像素位置检查的步骤给GPU并行化

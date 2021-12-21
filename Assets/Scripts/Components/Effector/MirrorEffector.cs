@@ -13,11 +13,7 @@ namespace geo_level
 		)]
 		public GameObject m_mirrorArea;
 
-		[Tooltip(@"The prefab for the mirrored.
-	Its Mirrored Worker will be modified to attach to the origin, the mirror area and the mirror trigger."
-		)]
 		public GameObject m_mirroredPrefab;
-
 
 
 		private Dictionary<GameObject, GameObject> target2mirrored = new Dictionary<GameObject, GameObject>();
@@ -25,6 +21,10 @@ namespace geo_level
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			GameObject target = collision.gameObject;
+
+			// Check if target is a valid trigger
+			if(!target.GetComponent<Marker>() || !target.GetComponent<Marker>().canTriggerMirror)
+				return;
 
 			// Check if mirror area assigned
 			if(!m_mirrorArea)
@@ -45,16 +45,16 @@ namespace geo_level
 			MyDebug.TriggerLog(gameObject, GetType().Name, target);
 
 			// Create & Init mirrored
-			if(!m_mirroredPrefab)
-			{
-				Debug.LogWarning("Mirrored Prefab not assigned.", this);
-				return;
-			}
 			mirrored = Instantiate(m_mirroredPrefab);
 			{
+				var mirroredRender = mirrored.GetComponent<SpriteRenderer>();
+				var mirroredGenerator = mirrored.GetComponent<SpriteGenerator>();
+				var targetRender = target.GetComponent<SpriteRenderer>();
+				var targetSprite = targetRender.sprite;
+
 				// Create mirrored's texture
-				var targetTex = target.GetComponent<SpriteGenerator>().m_tex;
-				mirrored.GetComponent<SpriteGenerator>().m_tex = new Texture2D(
+				var targetTex = targetSprite.texture;
+				mirroredGenerator.m_tex = new Texture2D(
 					targetTex.width, targetTex.height, 
 					TextureFormat.RGBA32, 
 					false, false
@@ -67,7 +67,7 @@ namespace geo_level
 				{
 					for(int y=0; y<targetTex.height; y++)
 					{
-						mirrored.GetComponent<SpriteGenerator>().m_tex.SetPixel(x, y, new Color(0, 0, 0, 0));
+						mirroredGenerator.m_tex.SetPixel(x, y, new Color(0, 0, 0, 0));
 					}
 				}
 
@@ -76,6 +76,12 @@ namespace geo_level
 				worker.m_origin = target;
 				worker.m_mirrorArea = m_mirrorArea;
 				worker.m_mirrorTrigger = gameObject;
+
+				// Inherit Sprite's Config
+				mirroredRender.color = targetRender.color;
+				mirroredGenerator.m_pivot.x = targetSprite.pivot.x / targetTex.width;
+				mirroredGenerator.m_pivot.y = targetSprite.pivot.y / targetTex.height;
+				mirroredGenerator.m_pixelsPerUnit = targetSprite.pixelsPerUnit;
 			}
 
 			// Memo the mirrored

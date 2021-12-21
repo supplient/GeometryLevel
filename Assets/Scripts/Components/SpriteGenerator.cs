@@ -8,11 +8,14 @@ namespace geo_level
 	public class SpriteGenerator : MonoBehaviour
 	{
 		// Const Parameters
-		public const int TEXTURE_WIDTH  = 100;
-		public const int TEXTURE_HEIGHT = 100;
+		public const int DEFAULT_TEXTURE_WIDTH  = 100;
+		public const int DEFAULT_TEXTURE_HEIGHT = 100;
 
 		// Property
 		public Texture2D m_tex;
+		/// <summary>
+		/// Pivot, in [0,1].
+		/// </summary>
 		public Vector2 m_pivot = new Vector2(0.5f, 0.5f);
 		public float m_pixelsPerUnit = 30.0f;
 
@@ -40,16 +43,14 @@ namespace geo_level
 			if (m_tex == null)
             {
 				Debug.Log("tex is null, so using default square.");
-				m_tex = new Texture2D(TEXTURE_WIDTH, TEXTURE_HEIGHT, TextureFormat.RGBA32, false, false);
-				for(int x=0; x<TEXTURE_WIDTH; x++)
-					for(int y=0; y<TEXTURE_HEIGHT; y++)
+				m_tex = new Texture2D(DEFAULT_TEXTURE_WIDTH, DEFAULT_TEXTURE_HEIGHT, TextureFormat.RGBA32, false, false);
+				for(int x=0; x<DEFAULT_TEXTURE_WIDTH; x++)
+					for(int y=0; y<DEFAULT_TEXTURE_HEIGHT; y++)
 						m_tex.SetPixel(x, y, new Color(1, 1, 1, 1));
             }
-			// Or texture is specified, we check if it is valid
+			// Or texture is specified
 			else
             {
-				Debug.Assert(m_tex.width  == TEXTURE_WIDTH );
-				Debug.Assert(m_tex.height == TEXTURE_HEIGHT);
 				m_tex = tex;
             }
         }
